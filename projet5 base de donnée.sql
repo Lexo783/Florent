@@ -685,38 +685,23 @@ VALUES (5,4,4,79);
 INSERT INTO classement_horse_race(Id_race_c, Id_horse_c, Classement_horse, Speed_horse)
 VALUES (5,5,3,80);
 
---Exo14--X
+--Exo14--   ######Gwen######
 
-SELECT FT.Team_name, COUNT(distinct FP.Id_player_f) AS NbrPlayer, COUNT( MF.Id_team_inside_f) + COUNT( MF2.Id_team_outside_f) AS NbrMatch, FT.Team_create, FT.Site_team
+SELECT FT.Team_name, COUNT(distinct FP.Id_player_f) AS NbrPlayer, (tab1.Match_inside + tab2.Match_outside) AS NbrMatch, FT.Team_create, FT.Site_team
 FROM football_team as FT
 LEFT JOIN football_player as FP
     ON FP.J_id_team_f = FT.Id_team_f
-LEFT JOIN matchs_football as MF
-    ON MF.Id_team_inside_f = FT.Id_team_f
-LEFT JOIN matchs_football as MF2
-    ON MF2.Id_team_outside_f = FT.Id_team_f    
-GROUP BY FP.J_id_team_f
+  
+LEFT JOIN 
+(SELECT MF.Id_team_inside_f AS Id_inside, COUNT(MF.Id_team_inside_f) AS Match_inside FROM matchs_football AS MF GROUP BY MF.Id_team_inside_f) as tab1 
+ON tab1.Id_inside=FT.Id_team_f
+
+LEFT JOIN 
+(SELECT MF.Id_team_outside_f AS Id_outside, COUNT(MF.Id_team_outside_f) AS Match_outside FROM matchs_football AS MF GROUP BY MF.Id_team_outside_f) as tab2 
+ON tab2.Id_outside=FT.Id_team_f
+
+GROUP BY FT.Id_team_f
 ORDER BY FT.Team_name ASC
-
-#essaie brique par brique
-SELECT *  from (
-SELECT Id_team_f , (count(Id_team_inside_f) over(PARTITION by FT.Id_team_f)) as nbInside
-from  matchs_football
-LEFT JOIN football_team AS FT
-    ON Id_team_inside_f = FT.Id_team_f
-) as Tab
-group by Id_team_f
-
----------
-
-SELECT FT.Team_name, MF.Id_team_inside_f, count(MF.Id_team_inside_f) + count(MF.Id_team_outside_f)
-FROM matchs_football AS MF
-LEFT JOIN football_team AS FT
-    ON FT.Id_team_f = MF.Id_team_inside_f
-LEFT JOIN football_team AS FT2
-    ON FT2.Id_team_f = MF.Id_team_outside_f
-WHERE FT.Id_team_f = 1
-group by MF.Id_team_inside_f, MF.Id_team_outside_f
 
 --Exo15--
 
@@ -728,23 +713,64 @@ ORDER BY FP.Name_player_f ASC
 
 --Exo16--X
 
-SELECT MF.Id_match_f, FT.Team_name, MAX(MF.Nbr_but_inside_f), FT2.Team_name
-FROM matchs_football AS MF
-LEFT JOIN football_team AS FT
-    ON FT.Id_team_f = MF.Id_team_outside_f
-LEFT JOIN football_team AS FT2
-    ON FT2.Id_team_f = MF.Id_team_outside_f
-
---Exo17--X
-
-SELECT FT.Name_team, MF.Nbr_but_inside_f, MF.Nbr_but_outside_f, FT2.Name_team
+SELECT tab1.Name_team_f,tab1.But_marque ,tab2.Name_team_f,tab2.But_pris
 FROM football_team AS FT
-LEFT JOIN matchs_football AS MF
-    ON FT.Id_team_f = MF.Id_team_inside_f
-LEFT JOIN matchs_football AS MF2
-    ON FT.Id_team_f = MF2.Id_team_outside_f
-WHERE FT2.Name_team == MF.Nbr_but_inside_f<3 OR FT2.Name_team == MF.Nbr_but_outside_f<3
-ORDER BY MF.Nbr_but_inside_f ASC
+
+LEFT JOIN 
+(SELECT FT.Team_name as Name_team_f,
+ MAX(MF.Nbr_but_inside_f) as But_marque
+ FROM football_team AS FT
+ LEFT JOIN matchs_football AS MF
+ ON FT.Id_team_f = MF.Id_team_inside_f
+ group by FT.Team_name
+ ) AS tab1
+ on FT.Team_name=tab1.Name_team_f
+ 
+LEFT JOIN 
+(SELECT FT.Team_name as Name_team_f,
+ Min(MF.Nbr_but_inside_f) as But_pris
+ FROM football_team AS FT
+ LEFT JOIN matchs_football AS MF
+ ON FT.Id_team_f = MF.Id_team_inside_f
+ group by FT.Team_name
+ ) AS tab2
+ on FT.Team_name=tab2.Name_team_f
+ 
+--Exo17--
+
+SELECT FT.Team_name, tab1.But_inside, tab2.But_outside, (tab3.Nbr_but_inside + tab4.Nbr_but_outside) as nb_min_3_but
+FROM football_team as FT
+LEFT JOIN football_player as FP
+    ON FP.J_id_team_f = FT.Id_team_f
+  
+LEFT JOIN 
+(SELECT MF.Id_team_inside_f AS Id_inside, SUM(MF.Nbr_but_inside_f) AS But_inside FROM matchs_football AS MF GROUP BY MF.Id_team_inside_f) as tab1 
+ON tab1.Id_inside=FT.Id_team_f
+
+LEFT JOIN 
+(SELECT MF.Id_team_outside_f AS Id_outside, SUM(MF.Nbr_but_outside_f) AS But_outside FROM matchs_football AS MF GROUP BY MF.Id_team_outside_f) as tab2 
+ON tab2.Id_outside=FT.Id_team_f
+
+LEFT JOIN 
+(SELECT MF.Id_team_inside_f AS Team_inside, count(MF.Id_team_inside_f) AS Nbr_but_inside
+ FROM matchs_football AS MF
+ WHERE MF.Nbr_but_inside_f >= 3 OR MF.Nbr_but_outside_f >= 3
+ group by MF.Id_team_inside_f
+ )AS tab3
+ ON tab3.Team_inside = FT.Id_team_f
+
+LEFT JOIN 
+(SELECT MF.Id_team_outside_f AS Team_outside, count(MF.Id_team_outside_f) AS Nbr_but_outside
+ FROM matchs_football AS MF
+ WHERE MF.Nbr_but_outside_f >= 3 OR MF.Nbr_but_inside_f >= 3
+ group by MF.Id_team_outside_f
+ )AS tab4
+ ON tab4.Team_outside = FT.Id_team_f
+
+GROUP BY FT.Id_team_f
+ORDER BY (tab1.But_inside+ tab2.But_outside) DESC
+
+
 
 --Exo18--X
 #besoin de plusieurs sous requete
@@ -771,30 +797,21 @@ Left Join matchs_tennis AS MT
 left join (select count(MT.Id_secondary_player_t) as nb_perdu , MT.Id_first_player_t as Id_first from matchs_tennis as MT group by MT.Id_secondary_player_t) as Tab ON Tab.Id_first = MT.Id_first_player_t
 Group By MT.Id_first_player_t
 
---Exo19--
+--Exo19--  ######Gwen#####
 
-SELECT PT.Firstname_player_t, PT.Age_player_t, MT.Id_first_player_t, MT.Id_secondary_player_t, PT.Nbr_medal_t, MT.Speed_shot_first_player_t AND MT.Speed_shot_secondary_player_t, MT.Speedrun_first_player_t AND MT.Speedrun_secondary_player_t, MT.
-Id_match_t
-FROM matchs_tennis AS MT
-LEFT JOIN players_tennis AS PT
-    ON MT.Id_first_player_t = PT.Id_player_t
-LEFT JOIN players_tennis AS PT2
-    ON MT.Id_secondary_player_t = PT2.Id_player_t
-GROUP BY MT.Id_first_player_t AND MT.Id_secondary_player_t,
-MT.Id_secondary_player_t_player_t
-ORDER BY PT.Name_player_t ASC
+SELECT PT.Firstname_player_t,PT.Name_player_t,COUNT(MT.`Id_first_player_t`) AS NBR_Win, tab.nb AS NBR_Loose,PT.Nbr_medal_t,MT.`Speed_shot_first_player_t`,MT.Speedrun_first_player_t
+FROM players_tennis as PT
+LEFT JOIN matchs_tennis as MT
+ON MT.Id_first_player_t = PT.Id_player_t
+left join 
+(
+    
+    SELECT MT.Id_secondary_player_t as Id,      COUNT(MT.Id_secondary_player_t) as nb
+    FROM matchs_tennis as MT
+    GROUP BY MT.Id_secondary_player_t
 
----------
-
-SELECT PT.Firstname_player_t, PT.Age_player_t, COUNT(MT.`Result_match_first_player_t`) AS NBR_WIN ,MT.Id_secondary_player_t AS NBR_Loose,PT.Nbr_medal_t,MT.Speed_shot_first_player_t,MT.Speedrun_first_player_t, MT.`Result_match_first_player_t` AS GAGNE_CONTRE
-FROM matchs_tennis AS MT
-LEFT JOIN players_tennis AS PT
-     ON MT.Id_first_player_t = PT.Id_player_t
-LEFT JOIN players_tennis AS PT2
-    ON MT.Id_secondary_player_t = PT2.Id_player_t
-    WHERE (MT.Id_secondary_player_t = )
+)as tab on tab.Id = PT.Id_player_t
 GROUP BY PT.Id_player_t
-
 --Exo20--
 
 
