@@ -715,38 +715,46 @@ ORDER BY FP.Name_player_f ASC
 
 SELECT tab1.Name_team,tab1.but, tab1.Name_team_adv ,tab2.Name_team_adv, tab2.but
 FROM football_team AS FT
+LEFT JOIN 
+(
+	SELECT tabBut.id as id, FT.Team_name as Name_team ,max(tabBut.but) as but, FT2.Team_name as Name_team_adv
+ 	FROM 
+ 	(
+    	SELECT Id_team_inside_f as id, Nbr_but_inside_f as but, Id_team_outside_f as id_adv FROM matchs_football
 
+     	UNION
+
+     	SELECT Id_team_outside_f, Nbr_but_outside_f, Id_team_inside_f FROM matchs_football
+     	ORDER BY but DESC
+    ) AS tabBut
+
+ 	LEFT JOIN football_team as FT
+ 	ON tabBut.id = FT.Id_team_f
+ 	LEFT JOIN football_team as FT2
+ 	ON tabBut.id_adv=FT2.Id_team_f
+    GROUP BY by id
+) AS tab1
+
+ON FT.Id_team_f=tab1.id
 LEFT JOIN
-(SELECT tabBut.id as id, FT.Team_name as Name_team ,max(tabBut.but) as but, FT2.Team_name as Name_team_adv
- FROM (
-     SELECT Id_team_inside_f as id, Nbr_but_inside_f as but, Id_team_outside_f as id_adv FROM matchs_football
-     UNION
-     SELECT Id_team_outside_f, Nbr_but_outside_f, Id_team_inside_f FROM matchs_football
-     order by but DESC
-     ) as tabBut
- LEFT JOIN football_team as FT
- ON tabBut.id = FT.Id_team_f
- LEFT JOIN football_team as FT2
- ON tabBut.id_adv=FT2.Id_team_f
-     GROUP BY by id
- ) AS tab1
- ON FT.Id_team_f=tab1.id
+(
+	SELECT tabBut2.id as id, FT.Team_name as Name_team ,max(tabBut2.but) as but, FT2.Team_name as Name_team_adv
+ 	FROM 
+ 	(
+    	SELECT Id_team_outside_f as id, Nbr_but_inside_f as but , Id_team_inside_f as id_adv FROM matchs_football
 
- LEFT JOIN
-(SELECT tabBut2.id as id, FT.Team_name as Name_team ,max(tabBut2.but) as but, FT2.Team_name as Name_team_adv
- FROM (
-     SELECT Id_team_outside_f as id, Nbr_but_inside_f as but , Id_team_inside_f as id_adv FROM matchs_football
-     UNION
-     SELECT Id_team_inside_f, Nbr_but_outside_f, Id_team_outside_f FROM matchs_football
-     ORDER BY but DESC
-     ) as tabBut2
- LEFT JOIN football_team as FT
- ON tabBut2.id = FT.Id_team_f
- LEFT JOIN football_team as FT2
- ON tabBut2.id_adv=FT2.Id_team_f
-     GROUP BY id
- ) AS tab2
- ON FT.Id_team_f=tab2.id
+    	UNION
+
+    	SELECT Id_team_inside_f, Nbr_but_outside_f, Id_team_outside_f FROM matchs_football
+    	ORDER BY but DESC
+    ) as tabBut2
+	LEFT JOIN football_team as FT
+	ON tabBut2.id = FT.Id_team_f
+	LEFT JOIN football_team as FT2 
+	ON tabBut2.id_adv=FT2.Id_team_f
+    GROUP BY id
+) AS tab2
+ON FT.Id_team_f=tab2.id
 
 
 --Exo17--
