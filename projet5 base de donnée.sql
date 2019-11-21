@@ -953,9 +953,9 @@ LEFT JOIN jockeys_hippique AS JH
     ON JH.Id_horse_j = CH.Id_horse
 ORDER BY CH.Name_horse ASC
 
---Exo24--X
+--Exo24--
 
-SELECT CH.Name_horse, CH.Age_horse, tab1.UN AS premier, tab2.TROIS AS podium, tab3.DERNIER AS dernier
+SELECT CH.Name_horse, CH.Age_horse, tab1.UN AS premier, tab2.TROIS AS podium, Looser.Loose
 FROM chevaux_hippique AS CH
 LEFT JOIN classement_horse_race AS CHH
     ON CH.Id_horse = CHH.Id_horse_c
@@ -971,38 +971,23 @@ ON tab1.Id = CHH.Id_horse_c
 LEFT JOIN
 (SELECT CHH.Id_horse_c as Id, COUNT(CHH.Classement_horse) AS TROIS
  FROM classement_horse_race AS CHH
- WHERE CHH.Classement_horse >= 3
+ WHERE CHH.Classement_horse <= 3
  GROUP BY CHH.Id_horse_c
 ) AS tab2
 ON tab2.Id = CHH.Id_horse_c
 
 LEFT JOIN
-(SELECT CHH.Id_horse_c as Id, COUNT(CHH.Classement_horse) AS DERNIER
- FROM classement_horse_race AS CHH
- WHERE CHH.Classement_horse = MAX(CHH.Classement_horse)
- GROUP BY CHH.Id_horse_c
-) AS tab3
-ON tab3.Id = CHH.Id_horse_c
+(
+    SELECT CHH.Id_horse_c as Id, COUNT(CHH.Classement_horse) AS Loose
+    FROM classement_horse_race AS CHH
+    WHERE CHH.Classement_horse > 3
+     GROUP BY CHH.Id_horse_c
+)AS Looser
+On Looser.Id = CHH.Id_horse_c
 
 GROUP BY CH.Id_horse
 ORDER BY premier ASC
-
-
-
-
-
-
-
-
-SELECT tab1.Id as Id, tab1.nb_participant as nb_participant, CHH.Id_horse_c from
-(SELECT CHH.Id_race_c as Id, (count(CHH.Id_horse_c)) as nb_participant
- FROM classement_horse_race AS CHH
- GROUP BY CHH.Id_race_c) as tab1
- LEFT JOIN classement_horse_race as CHH
- ON CHH.Id_race_c = tab1.Id
- order by Id, Classement_horse DESC
  
-
 --Exo25--
 
 SELECT CH.NAme_horse, RH.Location_race, CHH.Speed_horse
