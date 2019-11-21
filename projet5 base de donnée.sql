@@ -840,9 +840,9 @@ GROUP BY PT.Id_player_t
 order by PT.Name_player_t ASC
 
 --Exo20--
-SELECT PT.Firstname_player_t,PT.Name_player_t, PT.Age_player_t, COUNT(MT.`Id_first_player_t`) AS NBR_Win, tab.nb AS NBR_Loose,PT.Nbr_medal_t,
-tabVit.max_v_frappe as vitesse_frappe_max,
-tabVit.max_v_course as vitesse_max
+SELECT PT.Firstname_player_t,PT.Name_player_t, PT.Age_player_t,
+tabVit.moyenne_v_frappe as vitesse_frappe_moyenne,
+tabVit.moyenne_v_course as vitesse_moyenne
 FROM players_tennis as PT
 
 LEFT JOIN matchs_tennis as MT
@@ -857,7 +857,7 @@ LEFT JOIN
 )as tab ON tab.Id = PT.Id_player_t
 
 LEFT JOIN (
-SELECT tabV.id, max(tabV.v_frappe) as max_v_frappe, max(tabV.v_course) as max_v_course FROM 
+SELECT tabV.id, avg(tabV.v_frappe) as moyenne_v_frappe, avg(tabV.v_course) as moyenne_v_course FROM 
 (SELECT Id_first_player_t as id, Speed_shot_first_player_t as v_frappe, Speedrun_first_player_t as v_course FROM matchs_tennis
  
  UNION
@@ -866,9 +866,9 @@ SELECT tabV.id, max(tabV.v_frappe) as max_v_frappe, max(tabV.v_course) as max_v_
 as tabV
 GROUP BY id) as tabVit
 ON tabVit.id=PT.Id_player_t
-
+WHERE PT.Name_player_t LIKE "%NA%"
 GROUP BY PT.Id_player_t
-order by PT.Name_player_t ASC
+order by vitesse_frappe_moyenne DESC, vitesse_moyenne DESC
 
 --Exo21--
 
