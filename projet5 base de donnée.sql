@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS Utilisateurs(
     User_adresse varchar(100) NOT NULL,
  	User_code_postal varchar(5) NOT NULL,
     User_role VARCHAR(15) NOT NULL,
-    User_password varchar(150) NOT NULL,
+    User_password varchar(150) NOT NULL,    
  	PRIMARY KEY (Id_user)
 	)
 ENGINE=InnoDB;
@@ -38,10 +38,10 @@ CREATE TABLE IF NOT EXISTS football_player(
 	Id_player_f int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     Name_player_f VARCHAR(20) NOT NULL,
     Firstname_player_f VARCHAR(20) NOT NULL,
-    Age_player_f VARCHAR(2) NOT NULL,
+    Age_player_f VARCHAR(2) NOT NULL,    
     J_id_team_f int(10) UNSIGNED NOT NULL,
     Titulaire_player_f VARCHAR(20) NOT NULL,
-    FOREIGN KEY (J_id_team_f) REFERENCES football_team (Id_team_f) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (J_id_team_f) REFERENCES football_team (Id_team_f) ON DELETE CASCADE ON UPDATE CASCADE, 
     PRIMARY KEY (Id_player_f)
     )
 ENGINE=InnoDB;
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS players_tennis(
 	Id_player_t int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     Name_player_t VARCHAR(20) NOT NULL,
     Firstname_player_t VARCHAR(20) NOT NULL,
-    Age_player_t VARCHAR(2) NOT NULL,
+    Age_player_t VARCHAR(2) NOT NULL,    
     Nbr_medal_t VARCHAR(3),
     PRIMARY KEY (Id_player_t)
     )
@@ -146,10 +146,10 @@ VALUES ("GRANDPIERRE","Andrian","Andrian.grandpierre@edu.itescia.fr","0611093245
 INSERT INTO football_team(Team_name, Team_create, Site_team)
 VALUES ('Casseurs Flowters', '2014-12-12', 'https://casseur-flowter.fr');
 
-INSERT INTO football_team(Team_name, Team_create, Site_team)
+INSERT INTO football_team(Team_name, Team_create, Site_team) 
 VALUES ('Pied ballon','2015-04-01','https://piedballon.fr');
 
-INSERT INTO football_team(Team_name, Team_create, Site_team)
+INSERT INTO football_team(Team_name, Team_create, Site_team) 
 VALUES ('Paris Saint-Germain','1970-06-12','https://psg.fr');
 
 INSERT INTO football_team(Team_name, Team_create, Site_team)
@@ -164,283 +164,283 @@ VALUES ('Olympique lyonnais', '1950-06-04', 'https://ol.fr');
 --Exo6--
 
 -- TEAM 1
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('San', 'Orel', '37', 1, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Dupond', 'Bernard', '25', 1, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('San', 'Albert', '26', 1, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Cérien', 'Jean', '37', 1, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Tretien', 'Jean', '28', 1, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Aïmar', 'Jean', '31', 1, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Boréal', 'Aurore', '32', 1, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Lavillan', 'Rose', '30', 1, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Rible', 'Téo', '28', 1, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Troajour', 'Adan', '22', 1, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Ein', 'Jeff', '24', 1, 'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Croch','Sara','24',1,'remplaçant');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Touille','Sacha','28',1,'remplaçant');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Orlapydza','Jade','21',1,'remplaçant');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Orkaéfcé','Jade','20',1,'remplaçant');
 
 -- TEAM 2
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Coptère','Élie','24',2,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Kedalcesoir','Énora','28',2,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Nouie','Éva','21',2,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('lepaké','Jamie','20',2,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('redemende','Jean','24',2,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Peuplu','Jean','28',2,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Hépipiholi','Jeff','21',2,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Hun','Jeff','25',2,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Nanasse','Judas','26',2,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('age','Karl','28',2,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Caille','Lara','31',2,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Golade','Larry','24',2,'remplaçant');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Tatouille','Lara','28',2,'remplaçant');
 
 -- TEAM 3
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Navas','Keylor','32',3,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Bernat','Juan','26',3,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Corrêa','Marquinhos','25',3,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Silva','Thiago','35',3,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Meunier','Thomas','28',3,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Verrati','Marco','27',3,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Gueye','Idrissa','30',3,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Di maria','Angel','29',3,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Junior','Neymar','27',3,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('M’bappe','Kylian','20',3,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Icardi','Mauro','26',3,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Cavani','Edison','32',3,'remplaçant');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Diallo','Abdou','26',3,'remplaçant');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Draxler','Julian','27',3,'remplaçant');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Kehrer','Thilo','22',3,'remplaçant');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Kimpembe','Presnel','24',3,'remplaçant');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Herrera','Ander','29',3,'remplaçant');
 
 
 -- TEAM 4
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Dépoin','Marc','24',4,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Dégouts','Roland','28',4,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Dissoire','Sam','21',4,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Ypontoise','Serge','20',4,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Houtan','Laurent','24',4,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Dycull','Thierry','28',4,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Tim','Vic','21',4,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Noisète','Lucas','25',4,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Sur','LucSur','26',4,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Ômaly','Anne','28',4,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Cehef','Hassan','31',4,'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Magniez','Thibaut','34',4,'remplaçant');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Gonçalves','Romain','31',4,'remplaçant');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Cornet','François','38',4,'remplaçant');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Frisch','Valéry','43',4,'remplaçant');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('De Sousa','André','34',4,'remplaçant');
 
 -- TEAM 5
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Payet', 'Dimitri', '32', 5, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Thauvin', 'Florian', '26', 5, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Benedetto', 'Albert', '26', 5, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Cérien', 'Darío', '29', 5, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Rongier', 'Valentin', '24', 5, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('González Soberón', 'Álvaro', '29', 5, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Lopez', 'Maxime', '21', 5, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Strootman', 'Kevin', '29', 5, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Mandanda', 'Steve', '34', 5, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Germain', 'Valère', '29', 5, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Sakai', 'Hiroki', '29', 5, 'titulaire');
 
 -- TEAM 6
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Depay', 'Memphis', '25', 6, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Dembele', 'Moussa', '23', 6, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('San', 'Albert', '26', 6, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Traoré', 'Bertrand', '24', 6, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Aouar', 'Houssem', '21', 6, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Lopes', 'Anthony', '29', 6, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Andersen', 'Joachim', '23', 6, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Reine-Adélaïde', 'Jeff', '21', 6, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Oliveira', 'Jean Lucas', '21', 6, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Cornet', 'Maxwell', '23', 6, 'titulaire');
 
-INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player` (`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Tousart', 'Tousart', '22', 6, 'titulaire');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Terrier','Martin','22',6,'remplaçant');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Mendes','Thiago','27',6,'remplaçant');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Denayer','Jason','24',6,'remplaçant');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Dubois','Léo','25',6,'remplaçant');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Koné','Youssouf','24',6,'remplaçant');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Tătăruşanu','Ciprian','33',6,'remplaçant');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Tete','Kenny','24',6,'remplaçant');
 
-INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`)
+INSERT INTO `football_player`(`Name_player_f`, `Firstname_player_f`, `Age_player_f`, `J_id_team_f`, `Titulaire_player_f`) 
 VALUES ('Marçal','Fernando','30',6,'remplaçant');
 
 --Exo7--
@@ -505,72 +505,72 @@ VALUES ( 'Houssam','Legzil',20,69);
 --Exo9--X
 
 --player1
-INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`)
+INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`) 
 VALUES ('2001-04-14 14:50:00','Roland-Garros','Terre',1,2,100,98,22,20,true);
 
-INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`)
+INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`) 
 VALUES ('2004-08-28 17:15:00','Roland-Garros','Terre',1,3,112,104,21,21,true);
 
-INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`)
+INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`) 
 VALUES ('2005-09-18 12:20:00','Arènes de Metz','Terre',1,4,120,114,27,28,true);
 
 
 --player2
-INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`)
+INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`) 
 VALUES ('2010-06-04 13:40:00','Arena du stade Pierre-Mauroy','Dur',2,1,100,98,22,20,true);
 
-INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`)
+INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`) 
 VALUES ('2010-05-21 13:15:00','Roland-Garros','Gazon',2,1,120,121,22,21,true);
 
-INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`)
+INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`) 
 VALUES ('2010-10-01 12:40:00','Arènes de Metz','Dur',2,4,130,124,26,28,true);
 
-INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`)
+INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`) 
 VALUES ('2011-01-11 13:30:00','Roland-Garros','Terre',2,4,140,98,22,20,true);
 
-INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`)
+INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`) 
 VALUES ('2011-08-28 17:15:00','Arena du stade Pierre-Mauroy','Gazon',2,4,122,154,21,21,true);
 
 --player3
-INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`)
+INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`) 
 VALUES ('2012-11-12 13:15:00','Arena du stade Pierre-Mauroy','Gazon',3,4,144,134,20,21,true);
 
 --player4
 INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`)
 VALUES ('2012-11-12 12:15:00','Roland-Garros','Terre',4,6,147,145,23,21,true);
 
-INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`)
+INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`) 
 VALUES ('2012-11-30 15:25:00','Rolan-Garros','Dur',4,6,154,134,24,22,true);
 
-INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`)
+INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`) 
 VALUES ('2012-12-21 12:55:00','Arena du stade Pierre-Mauroy','Gazon',4,6,142,128,27,24,true);
 
 --player5
-INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`)
+INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`) 
 VALUES ('2010-06-04 13:40:00','Arènes de Metz','Terre',5,4,123,158,24,19,true);
 
-INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`)
+INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`) 
 VALUES ('2010-05-21 13:15:00','Roland-Garros','Gazon',5,4,120,121,22,21,true);
 
-INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`)
+INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`) 
 VALUES ('2010-10-01 12:40:00','Arènes de Metz','Dur',5,6,130,124,26,28,true);
 
-INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`)
+INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`) 
 VALUES ('2011-01-11 13:30:00','Roland-Garros','Terre',5,6,140,98,22,20,true);
 
-INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`)
+INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`) 
 VALUES ('2011-08-28 17:15:00','Arena du stade Pierre-Mauroy','Gazon',5,7,122,154,21,21,true);
 
-INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`)
+INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`) 
 VALUES ('2012-11-12 13:05:00','Arènes de Metz','Gazon',5,6,144,134,20,21,true);
 
 --player6
 
 --player7
-INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`)
+INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`) 
 VALUES ('2019-07-11 09:30:00','Hard Rock Stadium','Dur',7,6,269,119,35,21,true);
 
-INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`)
+INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`) 
 VALUES ('2019-07-11 19:30:00','Hard Rock Stadium','Dur',7,6,269,128,35,21,true);
 
 --Exo10--
@@ -592,41 +592,41 @@ VALUES ('Foudre',7,'https://www.letrot.com/images/ACTUALITES_TURFCOM/bold_capell
 
 --Exo11--
 
-INSERT INTO `jockeys_hippique`(`Name_jockey`, `Firstname_jockey`, `Age_jockey`, `Weight_jockey`, `Id_horse_j`)
+INSERT INTO `jockeys_hippique`(`Name_jockey`, `Firstname_jockey`, `Age_jockey`, `Weight_jockey`, `Id_horse_j`) 
 VALUES ('Lestrade','Bertrand','36','58',1);
 
-INSERT INTO `jockeys_hippique`(`Name_jockey`, `Firstname_jockey`, `Age_jockey`, `Weight_jockey`, `Id_horse_j`)
+INSERT INTO `jockeys_hippique`(`Name_jockey`, `Firstname_jockey`, `Age_jockey`, `Weight_jockey`, `Id_horse_j`) 
 VALUES ('Clé','Blague','28','60',2);
 
-INSERT INTO `jockeys_hippique`(`Name_jockey`, `Firstname_jockey`, `Age_jockey`, `Weight_jockey`, `Id_horse_j`)
+INSERT INTO `jockeys_hippique`(`Name_jockey`, `Firstname_jockey`, `Age_jockey`, `Weight_jockey`, `Id_horse_j`) 
 VALUES ('Pieux','Christophe','52','62',3);
 
-INSERT INTO `jockeys_hippique`(`Name_jockey`, `Firstname_jockey`, `Age_jockey`, `Weight_jockey`, `Id_horse_j`)
+INSERT INTO `jockeys_hippique`(`Name_jockey`, `Firstname_jockey`, `Age_jockey`, `Weight_jockey`, `Id_horse_j`) 
 VALUES ('Ricou','Jacques','39','63',4);
 
-INSERT INTO `jockeys_hippique`(`Name_jockey`, `Firstname_jockey`, `Age_jockey`, `Weight_jockey`, `Id_horse_j`)
+INSERT INTO `jockeys_hippique`(`Name_jockey`, `Firstname_jockey`, `Age_jockey`, `Weight_jockey`, `Id_horse_j`) 
 VALUES ('Cottin','David','29','61',5);
 
 --Exo12--
 
 --course 1
-INSERT INTO `race_hippiques`(`Time_race`, `Location_race`, `Weather_race`)
+INSERT INTO `race_hippiques`(`Time_race`, `Location_race`, `Weather_race`) 
 VALUES ('2019-04-12 14:00:00','Champs de course Engien','Ensoleillé');
 
 --course 2
-INSERT INTO `race_hippiques`(`Time_race`, `Location_race`, `Weather_race`)
+INSERT INTO `race_hippiques`(`Time_race`, `Location_race`, `Weather_race`) 
 VALUES ('2019-06-21 15:30:00','Hippodrome de Marseille','Ensoleillé');
 
 --course 3
-INSERT INTO `race_hippiques`(`Time_race`, `Location_race`, `Weather_race`)
+INSERT INTO `race_hippiques`(`Time_race`, `Location_race`, `Weather_race`) 
 VALUES ('2019-03-04 17:20:00','Hippodrome de Maisons-Laffitte','Pluvieux');
 
 --course 4
-INSERT INTO `race_hippiques`(`Time_race`, `Location_race`, `Weather_race`)
+INSERT INTO `race_hippiques`(`Time_race`, `Location_race`, `Weather_race`) 
 VALUES ('2019-05-27 08:45:00','Champs de course Engien','Brouillard');
 
 --course 5
-INSERT INTO `race_hippiques`(`Time_race`, `Location_race`, `Weather_race`)
+INSERT INTO `race_hippiques`(`Time_race`, `Location_race`, `Weather_race`) 
 VALUES ('2019-08-30 16:15:00','Hippodrome de ParisLongchamp','Pluvieux');
 
 --Exo13--
@@ -691,13 +691,13 @@ SELECT FT.Team_name, COUNT(distinct FP.Id_player_f) AS NbrPlayer, (tab1.Match_in
 FROM football_team as FT
 LEFT JOIN football_player as FP
     ON FP.J_id_team_f = FT.Id_team_f
-
-LEFT JOIN
-(SELECT MF.Id_team_inside_f AS Id_inside, COUNT(MF.Id_team_inside_f) AS Match_inside FROM matchs_football AS MF GROUP BY MF.Id_team_inside_f) as tab1
+  
+LEFT JOIN 
+(SELECT MF.Id_team_inside_f AS Id_inside, COUNT(MF.Id_team_inside_f) AS Match_inside FROM matchs_football AS MF GROUP BY MF.Id_team_inside_f) as tab1 
 ON tab1.Id_inside=FT.Id_team_f
 
-LEFT JOIN
-(SELECT MF.Id_team_outside_f AS Id_outside, COUNT(MF.Id_team_outside_f) AS Match_outside FROM matchs_football AS MF GROUP BY MF.Id_team_outside_f) as tab2
+LEFT JOIN 
+(SELECT MF.Id_team_outside_f AS Id_outside, COUNT(MF.Id_team_outside_f) AS Match_outside FROM matchs_football AS MF GROUP BY MF.Id_team_outside_f) as tab2 
 ON tab2.Id_outside=FT.Id_team_f
 
 GROUP BY FT.Id_team_f
@@ -716,7 +716,7 @@ ORDER BY FP.Name_player_f ASC
 SELECT tab1.Name_team,tab1.but, tab1.Name_team_adv ,tab2.Name_team_adv, tab2.but
 FROM football_team AS FT
 
-LEFT JOIN
+LEFT JOIN 
 (SELECT tabBut.id as id, FT.Team_name as Name_team ,max(tabBut.but) as but, FT2.Team_name as Name_team_adv
  FROM (
      SELECT Id_team_inside_f as id, Nbr_but_inside_f as but, Id_team_outside_f as id_adv FROM matchs_football
@@ -728,11 +728,11 @@ LEFT JOIN
  ON tabBut.id = FT.Id_team_f
  LEFT JOIN football_team as FT2
  ON tabBut.id_adv=FT2.Id_team_f
-     GROUP BY by id
- ) AS tab1
+     GROUP BY id
+ ) AS tab1f
  ON FT.Id_team_f=tab1.id
-
- LEFT JOIN
+ 
+ LEFT JOIN 
 (SELECT tabBut2.id as id, FT.Team_name as Name_team ,max(tabBut2.but) as but, FT2.Team_name as Name_team_adv
  FROM (
      SELECT Id_team_outside_f as id, Nbr_but_inside_f as but , Id_team_inside_f as id_adv FROM matchs_football
@@ -742,12 +742,11 @@ LEFT JOIN
      ) as tabBut2
  LEFT JOIN football_team as FT
  ON tabBut2.id = FT.Id_team_f
- LEFT JOIN football_team as FT2
+ LEFT JOIN football_team as FT2 
  ON tabBut2.id_adv=FT2.Id_team_f
      GROUP BY id
  ) AS tab2
  ON FT.Id_team_f=tab2.id
-
 
 --Exo17--
 
@@ -755,16 +754,16 @@ SELECT FT.Team_name, tab1.But_inside, tab2.But_outside, (tab3.Nbr_but_inside + t
 FROM football_team as FT
 LEFT JOIN football_player as FP
     ON FP.J_id_team_f = FT.Id_team_f
-
-LEFT JOIN
-(SELECT MF.Id_team_inside_f AS Id_inside, SUM(MF.Nbr_but_inside_f) AS But_inside FROM matchs_football AS MF GROUP BY MF.Id_team_inside_f) as tab1
+  
+LEFT JOIN 
+(SELECT MF.Id_team_inside_f AS Id_inside, SUM(MF.Nbr_but_inside_f) AS But_inside FROM matchs_football AS MF GROUP BY MF.Id_team_inside_f) as tab1 
 ON tab1.Id_inside=FT.Id_team_f
 
-LEFT JOIN
-(SELECT MF.Id_team_outside_f AS Id_outside, SUM(MF.Nbr_but_outside_f) AS But_outside FROM matchs_football AS MF GROUP BY MF.Id_team_outside_f) as tab2
+LEFT JOIN 
+(SELECT MF.Id_team_outside_f AS Id_outside, SUM(MF.Nbr_but_outside_f) AS But_outside FROM matchs_football AS MF GROUP BY MF.Id_team_outside_f) as tab2 
 ON tab2.Id_outside=FT.Id_team_f
 
-LEFT JOIN
+LEFT JOIN 
 (SELECT MF.Id_team_inside_f AS Team_inside, count(MF.Id_team_inside_f) AS Nbr_but_inside
  FROM matchs_football AS MF
  WHERE MF.Nbr_but_inside_f >= 3 OR MF.Nbr_but_outside_f >= 3
@@ -772,7 +771,7 @@ LEFT JOIN
  )AS tab3
  ON tab3.Team_inside = FT.Id_team_f
 
-LEFT JOIN
+LEFT JOIN 
 (SELECT MF.Id_team_outside_f AS Team_outside, count(MF.Id_team_outside_f) AS Nbr_but_outside
  FROM matchs_football AS MF
  WHERE MF.Nbr_but_outside_f >= 3 OR MF.Nbr_but_inside_f >= 3
@@ -783,34 +782,26 @@ LEFT JOIN
 GROUP BY FT.Id_team_f
 ORDER BY (tab1.But_inside+ tab2.But_outside) DESC
 
+--Exo18--
 
+SELECT PT.Name_player_t,PT.Firstname_player_t, PT.Age_player_t AS age, COUNT(MT.`Id_first_player_t`) AS NBR_Win, tab.nb AS NBR_Loose,PT.Nbr_medal_t, (COUNT(MT.`Id_first_player_t`) / tab.nb) AS Ratio
+FROM players_tennis as PT
 
---Exo18--X
-#besoin de plusieurs sous requete
-SELECT `Name_player_t`, `Firstname_player_t`, `Age_player_t`, count(MT.Id_first_player_t) AS Nbr_de_matche_gagné, count(MT.Id_secondary_player_t) AS Nbr_de_matche_perdu  ,`Nbr_medal_t`
-FROM `players_tennis` AS PT
-Left Join matchs_tennis AS MT
-    On MT.Id_first_player_t = PT.Id_player_t
-Group By MT.Id_first_player_t
+LEFT JOIN matchs_tennis as MT
+ON MT.Id_first_player_t = PT.Id_player_t
 
-#count perdu
-SELECT distinct(count(MT.Id_secondary_player_t) over(partition by MT.Id_secondary_player_t)) AS Nbr_de_match_perdu,  MT.Id_secondary_player_t
-FROM `matchs_tennis` AS MT
-Left Join players_tennis AS GPT #gagnant
-    On MT.Id_first_player_t = GPT.Id_player_t
-Left Join players_tennis AS PPT #perdant
-    On MT.Id_secondary_player_t = PPT.Id_player_t
+LEFT JOIN
+(
+    SELECT MT.Id_secondary_player_t as Id, COUNT(MT.Id_secondary_player_t) as nb
+    FROM matchs_tennis as MT
+    GROUP BY MT.Id_secondary_player_t
 
-#essaie non concluant , mais peut etre une piste a explorer
-SELECT `Name_player_t`, `Firstname_player_t`, `Age_player_t`, count(MT.Id_first_player_t) AS Nbr_de_matche_gagn ,`Nbr_medal_t`
-FROM `players_tennis` AS PT
-Left Join matchs_tennis AS MT
-    On MT.Id_first_player_t = PT.Id_player_t
+)as tab ON tab.Id = PT.Id_player_t
 
-left join (select count(MT.Id_secondary_player_t) as nb_perdu , MT.Id_first_player_t as Id_first from matchs_tennis as MT group by MT.Id_secondary_player_t) as Tab ON Tab.Id_first = MT.Id_first_player_t
-Group By MT.Id_first_player_t
+GROUP BY PT.Id_player_t
+order by age DESC, NBR_Win DESC
 
---Exo19--  ######Gwen#####
+--Exo19--
 
 SELECT PT.Firstname_player_t,PT.Name_player_t, PT.Age_player_t, COUNT(MT.`Id_first_player_t`) AS NBR_Win, tab.nb AS NBR_Loose,PT.Nbr_medal_t,
 tabVit.max_v_frappe as vitesse_frappe_max,
@@ -829,9 +820,9 @@ LEFT JOIN
 )as tab ON tab.Id = PT.Id_player_t
 
 LEFT JOIN (
-SELECT tabV.id, max(tabV.v_frappe) as max_v_frappe, max(tabV.v_course) as max_v_course FROM
+SELECT tabV.id, max(tabV.v_frappe) as max_v_frappe, max(tabV.v_course) as max_v_course FROM 
 (SELECT Id_first_player_t as id, Speed_shot_first_player_t as v_frappe, Speedrun_first_player_t as v_course FROM matchs_tennis
-
+ 
  UNION
 
  SELECT Id_secondary_player_t, Speed_shot_secondary_player_t, Speedrun_secondary_player_t FROM matchs_tennis)
@@ -841,8 +832,6 @@ ON tabVit.id=PT.Id_player_t
 
 GROUP BY PT.Id_player_t
 order by PT.Name_player_t ASC
-
-
 
 --Exo20--
 
@@ -851,7 +840,7 @@ order by PT.Name_player_t ASC
 
 SELECT PT.Firstname_player_t,PT.Name_player_t, PT.Age_player_t, COUNT(MT.`Id_first_player_t`) AS NBR_Win, tab.nb AS NBR_Loose,PT.Nbr_medal_t,
 tabVit.max_v_frappe as vitesse_frappe_max,
-tabVit.max_v_course as vitesse_max
+tabVit.max_v_course as vitesse_max, tabAdv.ADV AS adversaire_nul
 FROM players_tennis as PT
 
 LEFT JOIN matchs_tennis as MT
@@ -859,63 +848,143 @@ ON MT.Id_first_player_t = PT.Id_player_t
 
 LEFT JOIN
 (
-    SELECT MT.Id_secondary_player_t as Id, COUNT(MT.Id_secondary_player_t) as nb
+SELECT MT.Id_secondary_player_t as Id, COUNT(MT.Id_secondary_player_t) as nb
     FROM matchs_tennis as MT
     GROUP BY MT.Id_secondary_player_t
-
 )as tab ON tab.Id = PT.Id_player_t
 
-LEFT JOIN (
-SELECT tabV.id, max(tabV.v_frappe) as max_v_frappe, max(tabV.v_course) as max_v_course FROM
-(SELECT Id_first_player_t as id, Speed_shot_first_player_t as v_frappe, Speedrun_first_player_t as v_course FROM matchs_tennis
-
+LEFT JOIN 
+(
+SELECT tabV.id, max(tabV.v_frappe) as max_v_frappe, max(tabV.v_course) as max_v_course FROM 
+(
+SELECT Id_first_player_t as id, Speed_shot_first_player_t as v_frappe, Speedrun_first_player_t as v_course FROM matchs_tennis
+ 
  UNION
 
- SELECT Id_secondary_player_t, Speed_shot_secondary_player_t, Speedrun_secondary_player_t FROM matchs_tennis)
+SELECT Id_secondary_player_t, Speed_shot_secondary_player_t, Speedrun_secondary_player_t FROM matchs_tennis)
 as tabV
 GROUP BY id) as tabVit
 ON tabVit.id=PT.Id_player_t
 
+#reste a ajouter le  nom du joueur qu'il a le plus battu
+LEFT JOIN
+(
+ SELECT MT.Id_secondary_player_t AS ADV
+ FROM matchs_tennis AS MT
+ LEFT JOIN players_tennis AS PT
+    ON MT.Id_secondary_player_t = MT.Id_secondary_player_t
+ GROUP BY PT.Id_player_t
+ )AS tabAdv
+ON tabAdv.ADV=PT.Id_player_t
+
 GROUP BY PT.Id_player_t
 order by PT.Name_player_t ASC
 
+--Exo22--X
 
+SELECT PT.Name_player_t, PT.Id_player_t, Gazon.NbrMatch AS Nbr_Win_Gazon, Dur.NbrMatch AS Nbr_Win_Dur, Terre.NbrMatch AS Nbr_Win_Terre, Gazon2.NbrMatch AS Nbr_Loose_Gazon, Dur2.NbrMatch AS Nbr_Loose_Dur, Terre2.NbrMatch AS Nbr_Loose_Terre
+FROM players_tennis AS PT
 
+LEFT JOIN
+(SELECT MT.Id_first_player_t AS id, COUNT(Surface_t) AS NbrMatch
+ FROM `matchs_tennis` AS MT
+ LEFT JOIN players_tennis AS PT
+ ON MT.Id_first_player_t = PT.Id_player_t
+ WHERE MT.Surface_t = 'Gazon'
+ GROUP BY MT.Id_first_player_t
+) AS Gazon
+ON  Gazon.id = PT.Id_player_t
 
+LEFT JOIN
+(SELECT  MT.Id_first_player_t AS id, COUNT(Surface_t) AS NbrMatch
+FROM `matchs_tennis` AS MT
+LEFT JOIN players_tennis AS PT
+ ON MT.Id_first_player_t = PT.Id_player_t
+ WHERE MT.Surface_t= 'Dur'
+ GROUP BY MT.Id_first_player_t
+) AS Dur
+ON Dur.id = PT.Id_player_t
 
---Exo22--
+LEFT JOIN
+(SELECT MT.Id_first_player_t AS id, COUNT(Surface_t) AS NbrMatch
+FROM `matchs_tennis` AS MT
+LEFT JOIN players_tennis AS PT
+ ON MT.Id_first_player_t = PT.Id_player_t
+ WHERE MT.Surface_t = 'Terre'
+ GROUP BY MT.Id_first_player_t
+) AS Terre
+ON Terre.id = PT.Id_player_t
 
-(SELECT COUNT(Surface_t)
- FROM `matchs_tennis`
- WHERE `Surface_t` = "Gazon"
-) ;
+LEFT JOIN
+(SELECT COUNT(Surface_t) AS NbrMatch, MT.Id_secondary_player_t AS id
+ FROM `matchs_tennis` AS MT
+ LEFT JOIN players_tennis AS PT
+ ON MT.Id_secondary_player_t = PT.Id_player_t
+ WHERE MT.Surface_t = 'Gazon'
+ GROUP BY MT.Id_secondary_player_t
+) AS Gazon2
+ON  Gazon2.id = PT.Id_player_t
 
-(SELECT COUNT(Surface_t)
-FROM `matchs_tennis`
-WHERE `Surface_t`= "Dur"
-)  ;
+LEFT JOIN
+(SELECT COUNT(Surface_t) AS NbrMatch, MT.Id_secondary_player_t AS id
+FROM `matchs_tennis` AS MT
+LEFT JOIN players_tennis AS PT
+ ON MT.Id_secondary_player_t = PT.Id_player_t
+ WHERE MT.Surface_t= 'Dur'
+ GROUP BY MT.Id_secondary_player_t
+) AS Dur2
+ON Dur2.id = PT.Id_player_t
 
-(SELECT COUNT(Surface_t)
-FROM `matchs_tennis`
-WHERE `Surface_t`= "Terre"
-) ;
-
+LEFT JOIN
+(SELECT COUNT(Surface_t) AS NbrMatch, MT.Id_secondary_player_t AS id
+FROM `matchs_tennis` AS MT
+LEFT JOIN players_tennis AS PT
+ ON MT.Id_secondary_player_t = PT.Id_player_t
+ WHERE MT.Surface_t = 'Terre'
+ GROUP BY MT.Id_secondary_player_t
+) AS Terre2
+ON Terre2.id = PT.Id_player_t
 
 --Exo23--
 
 SELECT CH.*, JH.*
 FROM chevaux_hippique AS CH
-LEFT JOIN jockeys_hippique AS JH
+LEFT JOIN jockeys_hippique AS JH 
     ON JH.Id_horse_j = CH.Id_horse
 ORDER BY CH.Name_horse ASC
 
 --Exo24--X
 
-SELECT CH.Name_horse, CH.Age_horse, COUNT(CHH.Classement_horse) AS premier, COUNT(CHH.Classement_horse) AS podium, COUNT(CHH.Classement_horse=MAX(CHH.Classement_horse)) AS dernier
+SELECT CH.Name_horse, CH.Age_horse, tab1.UN AS premier, tab2.TROIS AS podium, tab3.DERNIER AS dernier
 FROM chevaux_hippique AS CH
 LEFT JOIN classement_horse_race AS CHH
     ON CH.Id_horse = CHH.Id_horse_c
-WHERE CH.Id_horse = 1
+    
+LEFT JOIN
+(SELECT CHH.Id_horse_c as Id,COUNT(CHH.Classement_horse) AS UN
+ FROM classement_horse_race AS CHH
+ WHERE CHH.Classement_horse = 1
+ GROUP BY CHH.Id_horse_c
+)AS tab1
+ON tab1.Id = CHH.Id_horse_c
+
+LEFT JOIN
+(SELECT CHH.Id_horse_c as Id, COUNT(CHH.Classement_horse) AS TROIS
+ FROM classement_horse_race AS CHH
+ WHERE CHH.Classement_horse >= 3
+ GROUP BY CHH.Id_horse_c
+) AS tab2
+ON tab2.Id = CHH.Id_horse_c
+
+LEFT JOIN
+(SELECT CHH.Id_horse_c as Id, COUNT(CHH.Classement_horse) AS DERNIER
+ FROM classement_horse_race AS CHH
+ WHERE CHH.Classement_horse = MAX(CHH.Classement_horse)
+ GROUP BY CHH.Id_horse_c
+) AS tab3
+ON tab3.Id = CHH.Id_horse_c
+
+GROUP BY CH.Id_horse
 ORDER BY premier ASC
 
 --Exo25--
@@ -929,3 +998,14 @@ ON CH.Id_horse = CHH.Id_horse_c
 
 WHERE Weather_race = 'Pluvieux'
 ORDER BY CHH.Speed_horse DESC
+
+
+
+
+
+
+
+
+
+
+
