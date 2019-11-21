@@ -502,7 +502,7 @@ INSERT INTO players_tennis(Name_player_t, Firstname_player_t, Age_player_t, Nbr_
 VALUES ( 'Houssam','Legzil',20,69);
 
 
---Exo9--X
+--Exo9--
 
 --player1
 INSERT INTO `matchs_tennis`(`Date_match_t`, `Location_match_t`, `Surface_t`, `Id_first_player_t`, `Id_secondary_player_t`, `Speed_shot_first_player_t`, `Speed_shot_secondary_player_t`, `Speedrun_first_player_t`, `Speedrun_secondary_player_t`, `Result_match_first_player_t`) 
@@ -880,7 +880,7 @@ ON tabAdv.ADV=PT.Id_player_t
 GROUP BY PT.Id_player_t
 order by PT.Name_player_t ASC
 
---Exo22--X
+--Exo22--
 
 SELECT PT.Name_player_t, PT.Id_player_t, Gazon.NbrMatch AS Nbr_Win_Gazon, Dur.NbrMatch AS Nbr_Win_Dur, Terre.NbrMatch AS Nbr_Win_Terre, Gazon2.NbrMatch AS Nbr_Loose_Gazon, Dur2.NbrMatch AS Nbr_Loose_Dur, Terre2.NbrMatch AS Nbr_Loose_Terre
 FROM players_tennis AS PT
