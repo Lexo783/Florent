@@ -870,7 +870,7 @@ WHERE PT.Name_player_t LIKE "%NA%"
 GROUP BY PT.Id_player_t
 order by vitesse_frappe_moyenne DESC, vitesse_moyenne DESC
 
---Exo21--
+--Exo21--X
 
 SELECT PT.Firstname_player_t,PT.Name_player_t, PT.Age_player_t, COUNT(MT.`Id_first_player_t`) AS NBR_Win, tab.nb AS NBR_Loose,PT.Nbr_medal_t,
 tabVit.max_v_frappe as vitesse_frappe_max,
@@ -989,7 +989,7 @@ ORDER BY CH.Name_horse ASC
 
 --Exo24--X
 
-SELECT CH.Name_horse, CH.Age_horse, tab1.UN AS premier, tab2.TROIS AS podium, tab3.DERNIER AS dernier
+SELECT CH.Name_horse, CH.Age_horse, tab1.UN AS premier, tab2.TROIS AS podium, Looser.Loose
 FROM chevaux_hippique AS CH
 LEFT JOIN classement_horse_race AS CHH
     ON CH.Id_horse = CHH.Id_horse_c
@@ -1005,19 +1005,19 @@ ON tab1.Id = CHH.Id_horse_c
 LEFT JOIN
 (SELECT CHH.Id_horse_c as Id, COUNT(CHH.Classement_horse) AS TROIS
  FROM classement_horse_race AS CHH
- WHERE CHH.Classement_horse >= 3
+ WHERE CHH.Classement_horse <= 3
  GROUP BY CHH.Id_horse_c
 ) AS tab2
 ON tab2.Id = CHH.Id_horse_c
 
 LEFT JOIN
-(SELECT CHH.Id_horse_c as Id, COUNT(CHH.Classement_horse) AS DERNIER
- FROM classement_horse_race AS CHH
- WHERE CHH.Classement_horse = MAX(CHH.Classement_horse)
- GROUP BY CHH.Id_horse_c
-) AS tab3
-ON tab3.Id = CHH.Id_horse_c
-
+(
+    SELECT CHH.Id_horse_c as Id, COUNT(CHH.Classement_horse) AS Loose
+    FROM classement_horse_race AS CHH
+    WHERE CHH.Classement_horse > 3
+     GROUP BY CHH.Id_horse_c
+)AS Looser
+On Looser.Id = CHH.Id_horse_c
 GROUP BY CH.Id_horse
 ORDER BY premier ASC
 
