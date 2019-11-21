@@ -715,12 +715,6 @@ ORDER BY FP.Name_player_f ASC
 
 SELECT tab1.Name_team,tab1.but, tab1.Name_team_adv ,tab2.Name_team_adv, tab2.but
 FROM football_team AS FT
-LEFT JOIN 
-(
-	SELECT tabBut.id as id, FT.Team_name as Name_team ,max(tabBut.but) as but, FT2.Team_name as Name_team_adv
- 	FROM 
- 	(
-    	SELECT Id_team_inside_f as id, Nbr_but_inside_f as but, Id_team_outside_f as id_adv FROM matchs_football
 
 LEFT JOIN 
 (SELECT tabBut.id as id, FT.Team_name as Name_team ,max(tabBut.but) as but, FT2.Team_name as Name_team_adv
@@ -840,37 +834,9 @@ GROUP BY PT.Id_player_t
 order by PT.Name_player_t ASC
 
 --Exo20--
-SELECT PT.Firstname_player_t,PT.Name_player_t, PT.Age_player_t,
-tabVit.moyenne_v_frappe as vitesse_frappe_moyenne,
-tabVit.moyenne_v_course as vitesse_moyenne
-FROM players_tennis as PT
 
-LEFT JOIN matchs_tennis as MT
-ON MT.Id_first_player_t = PT.Id_player_t
 
-LEFT JOIN
-(
-    SELECT MT.Id_secondary_player_t as Id, COUNT(MT.Id_secondary_player_t) as nb
-    FROM matchs_tennis as MT
-    GROUP BY MT.Id_secondary_player_t
-
-)as tab ON tab.Id = PT.Id_player_t
-
-LEFT JOIN (
-SELECT tabV.id, avg(tabV.v_frappe) as moyenne_v_frappe, avg(tabV.v_course) as moyenne_v_course FROM 
-(SELECT Id_first_player_t as id, Speed_shot_first_player_t as v_frappe, Speedrun_first_player_t as v_course FROM matchs_tennis
- 
- UNION
-
- SELECT Id_secondary_player_t, Speed_shot_secondary_player_t, Speedrun_secondary_player_t FROM matchs_tennis)
-as tabV
-GROUP BY id) as tabVit
-ON tabVit.id=PT.Id_player_t
-WHERE PT.Name_player_t LIKE "%NA%"
-GROUP BY PT.Id_player_t
-order by vitesse_frappe_moyenne DESC, vitesse_moyenne DESC
-
---Exo21--X
+--Exo21--
 
 SELECT PT.Firstname_player_t,PT.Name_player_t, PT.Age_player_t, COUNT(MT.`Id_first_player_t`) AS NBR_Win, tab.nb AS NBR_Loose,PT.Nbr_medal_t,
 tabVit.max_v_frappe as vitesse_frappe_max,
@@ -989,7 +955,7 @@ ORDER BY CH.Name_horse ASC
 
 --Exo24--X
 
-SELECT CH.Name_horse, CH.Age_horse, tab1.UN AS premier, tab2.TROIS AS podium, Looser.Loose
+SELECT CH.Name_horse, CH.Age_horse, tab1.UN AS premier, tab2.TROIS AS podium, tab3.DERNIER AS dernier
 FROM chevaux_hippique AS CH
 LEFT JOIN classement_horse_race AS CHH
     ON CH.Id_horse = CHH.Id_horse_c
@@ -1005,21 +971,37 @@ ON tab1.Id = CHH.Id_horse_c
 LEFT JOIN
 (SELECT CHH.Id_horse_c as Id, COUNT(CHH.Classement_horse) AS TROIS
  FROM classement_horse_race AS CHH
- WHERE CHH.Classement_horse <= 3
+ WHERE CHH.Classement_horse >= 3
  GROUP BY CHH.Id_horse_c
 ) AS tab2
 ON tab2.Id = CHH.Id_horse_c
 
 LEFT JOIN
-(
-    SELECT CHH.Id_horse_c as Id, COUNT(CHH.Classement_horse) AS Loose
-    FROM classement_horse_race AS CHH
-    WHERE CHH.Classement_horse > 3
-     GROUP BY CHH.Id_horse_c
-)AS Looser
-On Looser.Id = CHH.Id_horse_c
+(SELECT CHH.Id_horse_c as Id, COUNT(CHH.Classement_horse) AS DERNIER
+ FROM classement_horse_race AS CHH
+ WHERE CHH.Classement_horse = MAX(CHH.Classement_horse)
+ GROUP BY CHH.Id_horse_c
+) AS tab3
+ON tab3.Id = CHH.Id_horse_c
+
 GROUP BY CH.Id_horse
 ORDER BY premier ASC
+
+
+
+
+
+
+
+
+SELECT tab1.Id as Id, tab1.nb_participant as nb_participant, CHH.Id_horse_c from
+(SELECT CHH.Id_race_c as Id, (count(CHH.Id_horse_c)) as nb_participant
+ FROM classement_horse_race AS CHH
+ GROUP BY CHH.Id_race_c) as tab1
+ LEFT JOIN classement_horse_race as CHH
+ ON CHH.Id_race_c = tab1.Id
+ order by Id, Classement_horse DESC
+ 
 
 --Exo25--
 
