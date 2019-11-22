@@ -501,7 +501,6 @@ VALUES ( 'Stéfanos','Tsitsipas',21,3);
 INSERT INTO players_tennis(Name_player_t, Firstname_player_t, Age_player_t, Nbr_medal_t)
 VALUES ( 'Houssam','Legzil',20,69);
 
-
 --Exo9--
 
 --player1
@@ -685,7 +684,7 @@ VALUES (5,4,4,79);
 INSERT INTO classement_horse_race(Id_race_c, Id_horse_c, Classement_horse, Speed_horse)
 VALUES (5,5,3,80);
 
---Exo14--   ######Gwen######
+--Exo14--
 
 SELECT FT.Team_name, COUNT(distinct FP.Id_player_f) AS NbrPlayer, (tab1.Match_inside + tab2.Match_outside) AS NbrMatch, FT.Team_create, FT.Site_team
 FROM football_team as FT
@@ -859,11 +858,13 @@ WHERE PT.Name_player_t LIKE '%NA%'
 GROUP BY PT.Id_player_t
 order by vitesse_frappe_moyenne DESC, vitesse_moyenne DESC
 
+
 --Exo21--
 
-SELECT PT.Firstname_player_t,PT.Name_player_t, PT.Age_player_t, COUNT(MT.`Id_first_player_t`) AS NBR_Win, tab.nb AS NBR_Loose,PT.Nbr_medal_t,
+SELECT PT.Id_player_t, PT.Firstname_player_t,PT.Name_player_t, PT.Age_player_t, tabw.nb AS NBR_Win, tabl.nb AS NBR_Loose,PT.Nbr_medal_t,
 tabVit.max_v_frappe as vitesse_frappe_max,
-tabVit.max_v_course as vitesse_max, tabAdv.ADV AS adversaire_nul
+tabVit.max_v_course as vitesse_max,
+tabAdv.ADV as noob
 FROM players_tennis as PT
 
 LEFT JOIN matchs_tennis as MT
@@ -871,10 +872,17 @@ ON MT.Id_first_player_t = PT.Id_player_t
 
 LEFT JOIN
 (
+SELECT MT.Id_first_player_t as Id, COUNT(MT.Id_first_player_t) as nb
+    FROM matchs_tennis as MT
+    GROUP BY MT.Id_first_player_t
+)as tabw ON tabw.Id = PT.Id_player_t
+
+LEFT JOIN
+(
 SELECT MT.Id_secondary_player_t as Id, COUNT(MT.Id_secondary_player_t) as nb
     FROM matchs_tennis as MT
     GROUP BY MT.Id_secondary_player_t
-)as tab ON tab.Id = PT.Id_player_t
+)as tabl ON tabl.Id = PT.Id_player_t
 
 LEFT JOIN 
 (
@@ -886,22 +894,25 @@ SELECT Id_first_player_t as id, Speed_shot_first_player_t as v_frappe, Speedrun_
 
 SELECT Id_secondary_player_t, Speed_shot_secondary_player_t, Speedrun_secondary_player_t FROM matchs_tennis)
 as tabV
-GROUP BY id) as tabVit
+GROUP BY id
+) as tabVit
 ON tabVit.id=PT.Id_player_t
 
-#reste a ajouter le  nom du joueur qu'il a le plus battu
 LEFT JOIN
 (
- SELECT MT.Id_secondary_player_t AS ADV
- FROM matchs_tennis AS MT
- LEFT JOIN players_tennis AS PT
-    ON MT.Id_secondary_player_t = MT.Id_secondary_player_t
- GROUP BY PT.Id_player_t
+select tab.IdV as id, tab.IdP, PT.Name_player_t as ADV, max(tab.nb_defaite) as Maximum from
+(select MT.Id_first_player_t as IdV, MT.Id_secondary_player_t as IdP, count(MT.Id_secondary_player_t) as nb_defaite
+FROM matchs_tennis as MT
+group by MT.Id_first_player_t, MT.Id_secondary_player_t
+ORDER by nb_defaite DESC) as tab
+left join players_tennis as PT on tab.IdP= PT.Id_player_t
+group by tab.IdV
  )AS tabAdv
-ON tabAdv.ADV=PT.Id_player_t
+ON tabAdv.id=MT.Id_first_player_t
 
 GROUP BY PT.Id_player_t
 order by PT.Name_player_t ASC
+
 
 --Exo22--
 
@@ -968,6 +979,7 @@ LEFT JOIN players_tennis AS PT
 ) AS Terre2
 ON Terre2.id = PT.Id_player_t
 
+
 --Exo23--
 
 SELECT CH.*, JH.*
@@ -975,6 +987,7 @@ FROM chevaux_hippique AS CH
 LEFT JOIN jockeys_hippique AS JH 
     ON JH.Id_horse_j = CH.Id_horse
 ORDER BY CH.Name_horse ASC
+
 
 --Exo24--
 
@@ -1011,6 +1024,7 @@ On Looser.Id = CHH.Id_horse_c
 GROUP BY CH.Id_horse
 ORDER BY premier ASC
  
+ 
 --Exo25--
 
 SELECT CH.NAme_horse, RH.Location_race, CHH.Speed_horse
@@ -1022,14 +1036,4 @@ ON CH.Id_horse = CHH.Id_horse_c
 
 WHERE Weather_race = 'Pluvieux'
 ORDER BY CHH.Speed_horse DESC
-
-
-
-
-
-
-
-
-
-
 
